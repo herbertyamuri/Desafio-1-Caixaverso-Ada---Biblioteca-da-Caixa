@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca da Caixa</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+  </head>
+  <body>
+    <nav class="side-nav">
+      <ul>
+        <li>
+          <a href="#top" class="nav-item"
+            ><i class="fas fa-home" aria-hidden="true"></i>Home</a
+          >
+        </li>
+        <li>
+          <a href="#diagrama" class="nav-item"
+            ><i class="fas fa-project-diagram" aria-hidden="true"></i>Diagrama
+            UML</a
+          >
+        </li>
+        <li>
+          <a href="#funcoes" class="nav-item"
+            ><i class="fas fa-list" aria-hidden="true"></i>Lista de Funções</a
+          >
+        </li>
+        <li>
+          <a
+            href="documentacao_pdf.pdf"
+            class="nav-item"
+            target="_blank"
+            rel="noopener noreferrer"
+            ><i class="fas fa-file-pdf" aria-hidden="true"></i>Documentação<span
+              class="sr-only"
+            >
+              (abre em nova aba)</span
+            ></a
+          >
+        </li>
+      </ul>
+    </nav>
+
+    <div class="main-content">
+      <header class="main-header">
+        <div class="container">
+          <h1><span class="logo-caixa">CAIXA</span> | Biblioteca</h1>
+        </div>
+      </header>
+
+      <main class="container">
+        <section id="top" aria-labelledby="titulo-boas-vindas">
+          <h2 id="titulo-boas-vindas">
+            Bem-vindo(a) ao Sistema de Gestão da Biblioteca da Caixa.
+          </h2>
+          <p>
+            Para interagir com o sistema, abra o console do desenvolvedor
+            (pressione F12).
+          </p>
+        </section>
+
+        <section
+          id="diagrama"
+          class="uml-section"
+          aria-labelledby="titulo-diagrama"
+        >
+          <h3 id="titulo-diagrama">Diagrama UML Simplificado do Projeto</h3>
+          <img
+            src="Diagrama UML Simplificado.png"
+            alt="Diagrama UML Simplificado, mostrando as classes Livro, Autor, Usuario e Biblioteca e suas interações."
+            class="uml-image"
+          />
+        </section>
+
+        <p>
+          Você pode usar o objeto <code>biblioteca</code> que foi exposto
+          globalmente para chamar as funções conforme a lista abaixo:
+        </p>
+
+        <section
+          id="funcoes"
+          class="command-section"
+          aria-labelledby="titulo-funcoes"
+        >
+          <h3 id="titulo-funcoes">Lista de Funções</h3>
+
+          <div class="command-example">
+            <code>biblioteca.listarLivros()</code>
+            <p class="command-description">
+              Lista todos os livros cadastrados no sistema, mostrando título,
+              autor, disponibilidade e ISBN.
+            </p>
+          </div>
+
+          <div class="command-example">
+            <code>biblioteca.listarAutores()</code>
+            <p class="command-description">
+              Lista todos os autores cadastrados com seus respectivos dados.
+            </p>
+          </div>
+
+          <div class="command-example">
+            <code>biblioteca.listarUsuarios()</code>
+            <p class="command-description">
+              Lista todos os usuários cadastrados no sistema.
+            </p>
+          </div>
+        </section>
+
+        <section
+          class="command-section"
+          aria-labelledby="titulo-cadastro-autores"
+        >
+          <h3 id="titulo-cadastro-autores">Cadastro de Autores</h3>
+
+          <div class="command-example">
+            <code
+              >biblioteca.cadastrarAutor("Nome do Autor", "Nacionalidade",
+              anoNascimento)</code
+            >
+            <p class="command-description">
+              Cadastra um novo autor no sistema.
+            </p>
+            <ul class="parameter-list">
+              <li>Nome do Autor: texto entre aspas</li>
+              <li>Nacionalidade: texto entre aspas</li>
+              <li>anoNascimento: número do ano (ex: 1964)</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          class="command-section"
+          aria-labelledby="titulo-cadastro-livros"
+        >
+          <h3 id="titulo-cadastro-livros">Cadastro de Livros</h3>
+
+          <div class="command-example">
+            <code
+              >biblioteca.cadastrarLivro("Título do Livro", "Nome do Autor",
+              anoPublicacao, "Gênero", "ISBN")</code
+            >
+            <p class="command-description">
+              Cadastra um novo livro no sistema.
+            </p>
+            <ul class="parameter-list">
+              <li>Título do Livro: texto entre aspas</li>
+              <li>Nome do Autor: deve ser um autor já cadastrado</li>
+              <li>anoPublicacao: número do ano</li>
+              <li>Gênero: texto entre aspas</li>
+              <li>ISBN: código ISBN entre aspas</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="command-section" aria-labelledby="titulo-gerenciamento">
+          <h3 id="titulo-gerenciamento">Gerenciamento de Empréstimos</h3>
+
+          <div class="command-example">
+            <code
+              >biblioteca.emprestarLivro("ISBN-do-livro",
+              "matricula-do-usuario")</code
+            >
+            <p class="command-description">
+              Registra o empréstimo de um livro para um usuário.
+            </p>
+            <ul class="parameter-list">
+              <li>ISBN-do-livro: código ISBN do livro entre aspas</li>
+              <li>matricula-do-usuario: número de matrícula entre aspas</li>
+            </ul>
+          </div>
+
+          <div class="command-example">
+            <code>biblioteca.devolverLivro("ISBN-do-livro")</code>
+            <p class="command-description">Registra a devolução de um livro.</p>
+            <ul class="parameter-list">
+              <li>ISBN-do-livro: código ISBN do livro entre aspas</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="command-section" aria-labelledby="titulo-admin">
+          <h3 id="titulo-admin">Administração (Apenas para Usuários Admin)</h3>
+
+          <div class="command-example">
+            <code>biblioteca.excluirLivro("ISBN-do-livro", adminExecutor)</code>
+            <p class="command-description">
+              Remove um livro do sistema (requer objeto adminExecutor).
+            </p>
+            <ul class="parameter-list">
+              <li>ISBN-do-livro: código ISBN do livro entre aspas</li>
+              <li>adminExecutor: objeto do tipo Admin</li>
+            </ul>
+          </div>
+        </section>
+      </main>
+
+      <footer class="main-footer">
+        <div class="container">
+          <p>&copy; 2025 Biblioteca da Caixa. Todos os direitos reservados.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+  </body>
+</html>
