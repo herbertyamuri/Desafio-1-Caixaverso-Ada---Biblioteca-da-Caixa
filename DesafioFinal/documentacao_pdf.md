@@ -17,18 +17,17 @@ classDiagram
         +adicionarAoHistorico(livro)
         +get historico()
     }
-
     class Aluno {
+        <<Estudante>>
         -curso: string
     }
-
     class Professor {
+        <<Docente>>
         -departamento: string
     }
-
     class Admin {
+        <<Administrador>>
     }
-
     class Livro {
         -titulo: string
         -autor: Autor
@@ -40,19 +39,19 @@ classDiagram
         +emprestar()
         +devolver()
     }
-
     class Autor {
+        <<Entidade>>
         -nome: string
         -nacionalidade: string
         -anoNascimento: number
     }
-
     class Biblioteca {
         -_autores: array
         -_livros: array
         -_usuarios: array
         +cadastrarAutor()
         +cadastrarLivro()
+        +editarLivro()
         +emprestarLivro()
         +devolverLivro()
         +excluirLivro()
@@ -127,6 +126,7 @@ classDiagram
 - **Métodos**:
   - cadastrarAutor(nome, nacionalidade, anoNascimento)
   - cadastrarLivro(titulo, nomeAutor, anoPublicacao, genero, isbn)
+  - editarLivro(isbn, dadosParaAtualizar)
   - emprestarLivro(isbn, matriculaUsuario)
   - devolverLivro(isbn)
   - excluirLivro(isbn, adminExecutor)
@@ -185,14 +185,24 @@ biblioteca.cadastrarAutor("Nome", "Nacionalidade", anoNascimento);
 biblioteca.cadastrarLivro(titulo, nomeAutor, anoPublicacao, genero, isbn);
 ```
 
-4. **Operações com Livros**:
+4. **Editar um Livro Existente**:
+
+```javascript
+//O segundo parâmetro é um objeto com os campos a serem alterados
+biblioteca.editarLivro("ISBN-do-livro", {
+  titulo: "Novo Título",
+  anoPublicacao: 2025,
+});
+```
+
+5. **Operações com Livros**:
 
 ```javascript
 biblioteca.emprestarLivro(isbn, matriculaUsuario);
 biblioteca.devolverLivro(isbn);
 ```
 
-5. **Operações Administrativas**:
+6. **Operações Administrativas**:
 
 ```javascript
 // Primeiro, obter referência do admin

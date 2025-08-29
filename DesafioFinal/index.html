@@ -77,7 +77,7 @@
         >
           <h3 id="titulo-diagrama">Diagrama UML Simplificado do Projeto</h3>
           <img
-            src="Diagrama UML Simplificado.png"
+            src="Diagrama UML Simplificado do Projeto.png"
             alt="Diagrama UML Simplificado, mostrando as classes Livro, Autor, Usuario e Biblioteca e suas interações."
             class="uml-image"
           />
@@ -160,6 +160,29 @@
               <li>anoPublicacao: número do ano</li>
               <li>Gênero: texto entre aspas</li>
               <li>ISBN: código ISBN entre aspas</li>
+            </ul>
+          </div>
+        </section>
+
+        <section class="command-section" aria-labelledby="titulo-edicao-livros">
+          <h3 id="titulo-edicao-livros">Edição de Livros</h3>
+
+          <div class="command-example">
+            <code
+              >biblioteca.editarLivro("ISBN-do-livro", { titulo: "Novo Título",
+              anoPublicacao: 2025 })</code
+            >
+            <p class="command-description">
+              Edita as informações de um livro existente. Você deve passar o
+              ISBN do livro e um objeto contendo apenas os campos que deseja
+              alterar (ex: titulo, anoPublicacao, genero, nomeAutor).
+            </p>
+            <ul class="parameter-list">
+              <li>ISBN-do-livro: código ISBN do livro a ser editado.</li>
+              <li>
+                Objeto com dados: um objeto contendo apenas as chaves que você
+                deseja atualizar.
+              </li>
             </ul>
           </div>
         </section>

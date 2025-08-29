@@ -113,7 +113,46 @@ export class Biblioteca {
     }
     console.warn(`Livro com o ISBN "${isbn}" já existe.`);
   }
+  editarLivro(isbn, dadosParaAtualizar) {
+    const livro = this._encontrarLivroPorIsbn(isbn);
 
+    if (!livro) {
+      console.error(`Edição falhou: Livro com ISBN "${isbn}" não encontrado.`);
+      return false;
+    }
+
+    // Atualiza os campos simples que foram fornecidos no objeto
+    if (dadosParaAtualizar.titulo) {
+      livro.titulo = dadosParaAtualizar.titulo;
+    }
+    if (dadosParaAtualizar.anoPublicacao) {
+      livro.anoPublicacao = dadosParaAtualizar.anoPublicacao;
+    }
+    if (dadosParaAtualizar.genero) {
+      livro.genero = dadosParaAtualizar.genero;
+    }
+
+    // Tratamento especial para atualizar o autor, pois precisamos da instância da classe Autor
+    if (dadosParaAtualizar.nomeAutor) {
+      const novoAutor = this._encontrarAutorPorNome(
+        dadosParaAtualizar.nomeAutor
+      );
+      if (novoAutor) {
+        livro.autor = novoAutor;
+      } else {
+        // Avisa o usuário que o autor não foi encontrado, mas não impede a edição de outros campos
+        console.warn(
+          `Aviso na edição: Autor "${dadosParaAtualizar.nomeAutor}" não encontrado. O autor do livro não foi alterado.`
+        );
+      }
+    }
+
+    this._salvarDados();
+    console.log(
+      `Livro "${livro.titulo}" (ISBN: ${isbn}) foi atualizado com sucesso.`
+    );
+    return true;
+  }
   // --- MÉTODOS DE LISTAGEM ---
   listarLivros() {
     console.table(
